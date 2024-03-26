@@ -35,7 +35,7 @@ try:
     image_extensions[i] = image_extensions[i].replace("/", "")
     image_extensions[i] = re.escape(image_extensions[i])
   image_regex=f"^.*\.(?:{'|'.join(image_extensions)})$"
-  print(image_regex)
+
   for key in images.keys():
     if key!="main":
       for image_url in images[key].values():
@@ -43,7 +43,6 @@ try:
         img = requests.get(image_url)
         # if not an image add an image extension
         if not re.match(image_regex, image_name):
-          print(image_name)
           if img.headers.get('Content-Type', "text/plain").split(";")[0].split("/")[0]=="image":
             image_name += "."+img.headers.get('Content-Type', "text/plain").split(";")[0].split("/")[-1].replace("svg+xml", "svg")
           else:
@@ -69,6 +68,7 @@ try:
 
   os.chdir(path / "previews" / "images" )
 
+  images_per_doodle = {}
   for doodle, image_index in images["main"].items():
     image_name = doodle
     image_url = images[doodle][image_index]
@@ -80,13 +80,22 @@ try:
         image_name += "."+img.headers.get('Content-Type', "text/plain").split(";")[0].split("/")[-1]
       else:
         pass # just leave it
+    images_per_doodle[doodle] = image_name
     with open(image_name, "wb") as image:
       image.write(img.content)
+  try:
+    os.chdir(path)
     shutil.rmtree(".previews.bak")
+  except FileNotFoundError as error:
+    raise error
+  os.chdir(path)
 except BaseException as e:
   # See https://docs.python.org/3/library/exceptions.html#exception-hierarchy
-  # to see why I am catching BaseException, not Exceptio
+  # to see why I am catching BaseException, not Exception
   os.chdir(path)
   shutil.rmtree("previews")
   os.rename(".previews.bak", "previews")
   raise e
+
+with open("images-per-doodle.json", "wt") as file:
+  json.dump(images_per_doodle, file, sort_keys=True, indent=2)
