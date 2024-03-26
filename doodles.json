@@ -1,1 +1,26 @@
-{}
+{
+  "champion-island": {
+    "name": "Champion Island",
+    "preview-image": "d"
+  },
+  "halloween-2016": {
+    "name": "Magic Cat Academy",
+    "preview-image": "d"
+  },
+  "halloween-2020": {
+    "name": "Magic Cat Academy 2",
+    "preview-image": "d"
+  },
+  "kids-coding": {
+    "name": "Kids Coding for 50 years",
+    "preview-image": "d"
+  },
+  "pacman": {
+    "name": "Pacman",
+    "preview-image": "d"
+  },
+  "scoville": {
+    "name": "Scoville",
+    "preview-image": "d"
+  }
+}
