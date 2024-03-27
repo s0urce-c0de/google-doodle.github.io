@@ -1,4 +1,4 @@
-# Adding a new doodle
+<!-- # Adding a new doodle
 Update the following files
 * `names.json`
 * `doodles.json`
@@ -7,4 +7,4 @@ Update the following files
 * `summaries.json`
 * `base.json`
 
-Then run `doodles/update_previews.py` after installing requirements from `doodles/requirements.txt`
+Then run `doodles/update_previews.py` after installing requirements from `doodles/requirements.txt` -->

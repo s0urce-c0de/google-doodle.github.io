@@ -1,0 +1,17 @@
+#!/bin/bash
+# Usage
+# add_subtree REMOTE_NAME REMOTE_URL REMOTE_PATH REMOTE_BRANCH
+# REMOTE_NAME: the name to put, e.g. example-repo
+# REMOTE_URL: the url to add, e.g. https://example.com/example-repo.git
+# REMOTE_PATH: the path in the git repo to use, e.g. example-repo to create example-repo
+# REMOTE_BRANCH: the branch, normally main or master
+
+cd "$(dirname "$(dirname "$0")")"
+
+REMOTE_NAME="$1"
+REMOTE_URL="$2"
+REMOTE_PATH="$3"
+REMOTE_BRANCH="$4"
+
+git remote add -f "$REMOTE_NAME" "$REMOTE_URL"
+git subtree add --prefix "$REMOTE_PATH" "$REMOTE_NAME" "$REMOTE_BRANCH" --squash

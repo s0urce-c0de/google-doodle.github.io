@@ -1,0 +1,11 @@
+#!/bin/bash
+# USAGE:
+# fetch_new_commit REMOTE_NAME REMOTE_BRANCH REMOTE_PATH
+# read defenitions from other command
+
+REMOTE_NAME="$1"
+REMOTE_BRANCH="$2"
+REMOTE_PATH="$3"
+
+git fetch "$REMOTE_NAME" "$REMOTE_BRANCH"
+git subtree pull --prefix "$REMOTE_PATH" "$REMOTE_NAME" "$REMOTE_BRANCH" --squash
