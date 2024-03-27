@@ -3,6 +3,8 @@
 # fetch_new_commit REMOTE_NAME REMOTE_BRANCH REMOTE_PATH
 # read defenitions from other command
 
+cd "$(dirname "$(dirname "$(dirname "$0")")")"
+
 REMOTE_NAME="$1"
 REMOTE_BRANCH="$2"
 REMOTE_PATH="$3"

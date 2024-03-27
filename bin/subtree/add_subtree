@@ -6,7 +6,7 @@
 # REMOTE_PATH: the path in the git repo to use, e.g. example-repo to create example-repo
 # REMOTE_BRANCH: the branch, normally main or master
 
-cd "$(dirname "$(dirname "$0")")"
+cd "$(dirname "$(dirname "$(dirname "$0")")")"
 
 REMOTE_NAME="$1"
 REMOTE_URL="$2"
