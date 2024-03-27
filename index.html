@@ -2,8 +2,31 @@
 <html>
   <head>
     <link href="style.css" rel="stylesheet">
+    <link href="iframe.css" rel="stylesheet">
   </head>
   <body>
     <h1>Welcome to the Google Doodle Repository</h1>
+    <div id="frames"></div>
+    <script>
+      (function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();
+      fetch("doodles/doodle.json")
+        .then((resp) => {return resp.json()})
+        .then((doodles) => {
+          Object.values(doodles).forEach(doodle => {
+            console.log(doodle)
+            let frame = document.createElement("iframe");
+            // this part is hacky, since relative
+            // urls are not part of the spec
+            let baseURI = document.baseURI.endsWith("/")
+                            ?document.baseURI
+                            :`${document.baseURI.split("/").slice(0,-1).join("/")}/`
+            let tile = new URL(`${baseURI}tile.html`)
+            tile.searchParams.set("name", doodle["name"])
+            tile.searchParams.set("image", `doodles/previews/images/${doodle["preview-image"]}`)
+            tile.searchParams.set("summary", doodle["summary"])
+            frame.src = tile.toString();
+            document.getElementById("frames").append(frame)
+      });})
+    </script>
   </body>
 </html>

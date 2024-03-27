@@ -1,9 +1,41 @@
 <!DOCTYPE html>
+<!--
+  Parameters:
+    name: string
+      The name of the game
+    image: url
+      The URL of the image
+    summary: string
+      The summary of the game
+-->
 <html>
   <head>
     <link href="style.css" rel="stylesheet">
+    <script>
+      var write=function(...args){document.open();document.write(...args);document.close()};
+      var search_params = new URLSearchParams(window.location.search);
+    </script>
   </head>
   <body>
-    hi, I am a tile
+    <div style="width:100%;background-color:#FFF;height:50%">
+      <div style="margin: auto;
+                  width: 100%;
+                  height: 100%;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  background-position: center center;" id="image"></div>
+      <script>
+        var image = document.getElementById("image");
+        image.style.backgroundImage=`url("${search_params.get("image")}")`
+      </script>
+    </div>
+    <h5><script>write(search_params.get("name"))</script></h5>
+    <div style="
+      margin: 3% 7%;
+    ">
+      <script>write(search_params.get("summary").replace("\\n","\n").replace("\n", "<br>"))</script>
+    </div>
   </body>
 </html>
+
+<!-- <script>      (function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();</script> -->

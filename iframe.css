@@ -1,0 +1,10 @@
+div#frames {
+  gap: 40px;
+}
+
+iframe {
+  border-radius: 40px;
+  margin: 20px;
+  min-width:30%;
+  height:60vh;
+}

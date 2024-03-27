@@ -1,4 +1,10 @@
 {
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
+  "explorer.fileNesting.enabled": true,
+  "explorer.sortOrder": "type",
+  "explorer.fileNesting.patterns": {
+    "index.html": "tile.html, style.css, iframe.css",
+    "doodle.json": "*.json"
+  }
 }

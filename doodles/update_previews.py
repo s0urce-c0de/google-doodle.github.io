@@ -88,7 +88,6 @@ try:
     shutil.rmtree(".previews.bak")
   except FileNotFoundError as error:
     raise error
-  os.chdir(path)
 except BaseException as e:
   # See https://docs.python.org/3/library/exceptions.html#exception-hierarchy
   # to see why I am catching BaseException, not Exception
@@ -96,6 +95,8 @@ except BaseException as e:
   shutil.rmtree("previews")
   os.rename(".previews.bak", "previews")
   raise e
+
+os.chdir(path)
 
 with open("images-per-doodle.json", "wt") as file:
   json.dump(images_per_doodle, file, sort_keys=True, indent=2)
