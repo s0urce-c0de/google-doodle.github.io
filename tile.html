@@ -7,6 +7,8 @@
       The URL of the image
     summary: string
       The summary of the game
+    url: url
+      The url of the game
 -->
 <html>
   <head>
@@ -23,7 +25,7 @@
                   height: 100%;
                   background-size: contain;
                   background-repeat: no-repeat;
-                  background-position: center center;" id="image"></div>
+                  background-position: center center;" id="image" onclick="window.top.location.href=`./${search_params.get('url')}`"></div>
       <script>
         var image = document.getElementById("image");
         image.style.backgroundImage=`url("${search_params.get("image")}")`
