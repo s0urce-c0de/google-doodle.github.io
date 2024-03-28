@@ -29,8 +29,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Generate Doodle JSON
-        run: ./doodles/generate_doodle_json.py
+      # - name: Generate Doodle JSON
+      #   run: ./doodles/generate_doodle_json.py
       - name: f
         run: ls
       - name: r
