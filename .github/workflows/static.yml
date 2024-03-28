@@ -29,14 +29,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      # - name: Generate Doodle JSON
-      #   run: ./doodles/generate_doodle_json.py
-      - name: f
-        run: ls -lA /home/runner/work/google-doodle.github.io/google-doodle.github.io
-      - name: r
-        run: tree /home/runner/work/google-doodle.github.io/google-doodle.github.io
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Generate Doodle JSON
+        run: ./doodles/generate_doodle_json.py
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
