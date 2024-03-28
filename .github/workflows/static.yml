@@ -34,7 +34,7 @@ jobs:
       - name: f
         run: ls
       - name: r
-        run: tree
+        run: tree /home
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
