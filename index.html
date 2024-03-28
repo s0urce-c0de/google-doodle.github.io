@@ -12,8 +12,7 @@
       fetch("doodles/doodle.json")
         .then((resp) => {return resp.json()})
         .then((doodles) => {
-          Object.values(doodles).forEach(doodle => {
-            console.log(doodle)
+          Object.keys(doodles).forEach(key => {
             let frame = document.createElement("iframe");
             // this part is hacky, since relative
             // urls are not part of the spec
@@ -21,9 +20,10 @@
                             ?document.baseURI
                             :`${document.baseURI.split("/").slice(0,-1).join("/")}/`
             let tile = new URL(`${baseURI}tile.html`)
-            tile.searchParams.set("name", doodle["name"])
-            tile.searchParams.set("image", `doodles/previews/images/${doodle["preview-image"]}`)
-            tile.searchParams.set("summary", doodle["summary"])
+            tile.searchParams.set("name", doodles[key]["name"])
+            tile.searchParams.set("image", `doodles/previews/images/${doodles[key]["preview-image"]}`)
+            tile.searchParams.set("summary", doodles[key]["summary"])
+            tile.searchParams.set("url", key);
             frame.src = tile.toString();
             document.getElementById("frames").append(frame)
       });})
