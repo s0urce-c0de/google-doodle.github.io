@@ -31,6 +31,10 @@ jobs:
     steps:
       - name: Generate Doodle JSON
         run: ./doodles/generate_doodle_json.py
+      - name: f
+        run: ls
+      - name: r
+        run: tree
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
