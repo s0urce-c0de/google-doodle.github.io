@@ -32,4 +32,13 @@ with socketserver.TCPServer(("", PORT), CustomHandler) as httpd:
 ```
 Then run in that directory clone the doodles, do the setup, etc. (Also you need to be a coder to understand the sh\*tty mess i made.). Figure it out if you are smart.
 
-TIP: Use [`ngrok`](https://ngrok.io/) for bypassing rate limit on ports.
+USE:
+```bash
+export PORT=${PORT:-8000}
+curl https://tunnel.pyjam.as/8000 > /tmp/$PORT-tunnel.conf && wg-quick up /tmp/$PORT-tunnel.conf
+( trap exit SIGINT ; read -r -d '' _ </dev/tty )
+wg-quick down /tmp/$PORT-tunnel.conf
+rm -rf /tmp/$PORT-tunnel.conf
+```
+to use a fast instance.
+First install the dependencies though.
