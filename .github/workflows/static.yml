@@ -25,7 +25,8 @@ jobs:
   generate-doodles:
     runs-on: ubuntu-latest
     steps:
-    - run: doodles/update_doodle_json.py 
+    - working-directory: "."
+      run: ./doodles/update_doodle_json.py 
   # Single deploy job since we're just deploying
   deploy:
     environment:
