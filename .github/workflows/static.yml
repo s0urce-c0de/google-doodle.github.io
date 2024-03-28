@@ -22,12 +22,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  generate-doodles:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Generate Doodle JSON
-      working-directory: "."
-      run: ./doodles/generate_doodle_json.py 
   # Single deploy job since we're just deploying
   deploy:
     environment:
@@ -35,14 +29,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Generate Doodle JSON
+        run: ./doodles/generate_doodle_json.py
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        with:
           # Upload entire repository
+        with:
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
