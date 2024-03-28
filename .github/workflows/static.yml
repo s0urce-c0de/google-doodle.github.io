@@ -32,9 +32,9 @@ jobs:
       # - name: Generate Doodle JSON
       #   run: ./doodles/generate_doodle_json.py
       - name: f
-        run: ls -lA /home/runner/google-doodle.github.io
+        run: ls -lA /home/runner/work/google-doodle.github.io
       - name: r
-        run: tree /home/runner/google-doodle.github.io
+        run: tree /home/runner/work/google-doodle.github.io
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
